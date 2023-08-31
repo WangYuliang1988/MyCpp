@@ -26,10 +26,6 @@ void introRef()
 	int& ri = i; // ri 是一个初始化为 i 的整型引用
 	ri = 20; // 对 ri 进行读写 = 对 i 进行读写
 
-	setArrItem(0) = 10;
-	cout << typeid(setArrItem(0)).name() << endl;
-	cout << arr[0] << endl;
-
 	cout << "To learn reference in C++, check 'learnref.cpp'.\n" << endl;
 }
 

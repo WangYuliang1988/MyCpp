@@ -38,7 +38,46 @@ int main()
 	auto ai = 10;
 	auto awc = L'C';
 	auto apt = &awc;
-	cout << "  auto apt's type is: " << typeid(apt).name() << "\n" << endl; // typeid(xxx).name() 可以获取 xxx 的类型
+	cout << "  auto apt's type is: " << typeid(apt).name() << "\n" << endl; // typeid(xxx).name() 可以获取 xxx 对应的类型
+
+	// 
+	// new 和 delete
+	//
+	// new 和 delete 是 C++ 用于在堆上占用和释放内存的两个运算符
+	//
+	// new 语法格式：
+	//	type* pointer_name = new type;
+	// 
+	// new 运算符的内部实现分为两步：
+	//	1. 内存分配：调用 operator new(size_t) 函数，完成内存分配；// 对应 C 语言中的 malloc 函数
+	//	2. 创建对象：调用构造函数在分配的堆内存上创建相应类型的对象，并返回该内存块的首地址。若构造函数运行失败，则释放分配的内存。
+	//
+	int* pi = new int;
+	cout << "new int without initial value: " << *pi << endl;
+	char* pc = new char('C');
+	cout << "new char with initial value: " << *pc << endl;
+	float* parr = new float[3] {1.2f, 2.4f, 3.6f};
+	cout << "new float array: ";
+	for (int i = 0; i < 3; i++)
+	{
+		cout << parr[i];
+		if (i != 2)
+		{
+			cout << ", ";
+		}
+	}
+	cout << "\n" << endl;
+	//
+	// delete 语法格式：
+	//	delete pointer_name;
+	//
+	// delete 运算符的内部实现分为两步：
+	//	1. 清理对象：调用析构函数完成可能涉及的资源释放；
+	//	2. 内存释放：调用 operator delete(void*) 函数，释放堆内存。// 对应 C 语言的 free 函数
+	//
+	delete pi;
+	delete pc;
+	delete []parr; // 注意释放数组堆内存的语法格式
 
 	// 引用
 	introRef();
