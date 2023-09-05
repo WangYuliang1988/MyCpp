@@ -21,9 +21,15 @@
     <ClCompile Include="learnref.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="learnoop.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="learnref.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="learnoop.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -7,6 +7,7 @@
 //
 #include <iostream>
 #include "learnref.h"
+#include "learnoop.h"
 
 using namespace std;
 
@@ -40,7 +41,13 @@ int main()
 	auto apt = &awc;
 	cout << "  auto apt's type is: " << typeid(apt).name() << "\n" << endl; // typeid(xxx).name() 可以获取 xxx 对应的类型
 
-	// 
+	//
+	// 范围解析运算符 ::
+	//
+	// 范围解析运算符用于标识一个标识符所属的范围，通常用于命名空间和类。
+	//
+
+	//
 	// new 和 delete
 	//
 	// new 和 delete 是 C++ 用于在堆上占用和释放内存的两个运算符
@@ -79,6 +86,28 @@ int main()
 	delete pc;
 	delete []parr; // 注意释放数组堆内存的语法格式
 
+	// 
+	// inline
+	//
+	// C++ 提供 inline 关键字用以提高函数执行效率，其语法格式为：
+	//	inline function_type function_name(params) { ... }
+	//
+	// 内联函数可以取代宏关于函数内联展开的作用，内联函数会对函数参数等进行类型检查，而宏不会，因此内联函数相比宏更安全。
+	//
+	// 内联函数是以代码膨胀的代价减少函数调用的开销，只有短小简单的函数适合内联。若函数代码较长或包含循环等复杂逻辑，则不适合内联。
+	//
+
+	//
+	// 函数重载
+	// 
+	// 相同的函数名，不同的参数个数或不同的参数类型。
+	// 
+	// 实现机制：C++ 在编译时会根据函数的参数列表对函数进行重命名，发生调用时，编译器根据传入的实参来匹配对应的函数。
+	//
+
 	// 引用
 	introRef();
+
+	// 面向对象
+	introOop();
 }
