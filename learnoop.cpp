@@ -16,7 +16,7 @@ void introOop()
 	Student unknown = Student();
 	Student jack = Student("Jack");
 	Student tom = Student("Tom", 98.5f);
-	Student dave = Student(unknown); // 注意：该方式调用的是拷贝构造函数，简写 Student dave = unknown;
+	Student dave = Student(unknown); // 注意：该初始化调用的是拷贝构造函数，可简写为 Student dave = unknown;
 	//
 	// 方式二：隐式调用构造函数创建对象
 	//
@@ -68,5 +68,5 @@ void introOop()
 	delete plsTom;
 	delete plsDave;
 
-	cout << "To learn oop in C++, check 'Student.h' and 'learnoop.cpp'.\n" << endl;
+	cout << "To learn OOP in C++, check 'Student.h' and 'learnoop.cpp'.\n" << endl;
 }

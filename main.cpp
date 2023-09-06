@@ -8,6 +8,7 @@
 #include <iostream>
 #include "learnref.h"
 #include "learnoop.h"
+#include "Student.h"
 
 using namespace std;
 
@@ -110,4 +111,21 @@ int main()
 
 	// 面向对象
 	introOop();
+
+	//
+	// 运算符重载
+	// 
+	// Student 类中对 -/+/= 运算符进行了重载
+	// 
+	// 注意：此处重载的 '=' 是赋值运算符，是对一个已存在的对象进行赋值，而不是调用拷贝构造函数：
+	//	1.调用拷贝构造函数：Student stu = jack; // 假设 jack 是已存在的 Student 对象
+	//	2.进行赋值运算：Student stu; stu = jack; // 假设 jack 是已存在的 Student 对象
+	//
+	cout << "Operator Overloading:" << endl;
+	Student andy = { "Andy", 90.f };
+	cout << "Student minus float: " << andy - 10.f << endl;
+	cout << "Student plus float: " << andy + 10.f << endl;
+	Student bob = {"Bob", 80.f};
+	bob = andy; // 自定义的 "=" 重载函数只对 mScore 进行赋值
+	cout << "Student Bob now has the same score with Andy: " << bob.getScore() << endl;
 }

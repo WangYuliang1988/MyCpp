@@ -51,3 +51,19 @@ Student::~Student()
 		delete mName;
 	}
 }
+//
+// 运算符重载函数语法格式为：
+//	return_type class_name::operator[oper_symbol](param) {}
+//
+float Student::operator-(float f)
+{
+	return mScore - f;
+}
+float Student::operator+(float f)
+{
+	return this->mScore + f;
+}
+void Student::operator=(const Student& obj)
+{
+	mScore = obj.mScore;
+}
