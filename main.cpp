@@ -128,4 +128,14 @@ int main()
 	Student bob = {"Bob", 80.f};
 	bob = andy; // 自定义的 "=" 重载函数只对 mScore 进行赋值
 	cout << "Student Bob now has the same score with Andy: " << bob.getScore() << endl;
+
+	//
+	// static
+	//
+	// static 关键字具有以下作用：
+	//	1. 限定全局变量只能在定义该变量的文件内使用；
+	//	2. 限定函数只能在定义该函数的文件内使用；
+	//	3. 让局部变量在程序生命周期内存活，不再随函数的结束而结束，且只进行一次初始化；
+	//	4. 将类的成员变量和成员函数变为静态成员变量和静态成员函数，实现多个同类对象之间的数据共享。
+	//
 }

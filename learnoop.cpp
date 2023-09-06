@@ -68,5 +68,10 @@ void introOop()
 	delete plsTom;
 	delete plsDave;
 
+	//
+	// 调用类的静态成员函数
+	//
+	Student::sGetCount(); // 12
+
 	cout << "To learn OOP in C++, check 'Student.h' and 'learnoop.cpp'.\n" << endl;
 }

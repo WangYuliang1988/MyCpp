@@ -39,11 +39,22 @@ private:
 	//
 	// 常成员变量
 	//
-	// 初始化后值不能再改变，此处采用定义时初始化的方式进行初始化
+	// 初始化后值不能再改变，此处采用定义时初始化的方式进行初始化。
 	// 
-	// 若使用构造函数初始化，则只能采用下面提到的构造函数成员初始化列表方式
+	// 若要使用构造函数初始化常成员变量，则只能采用下面提到的构造函数成员初始化列表方式。
 	//
 	const long long mId = time_point_cast<microseconds>(system_clock::now()).time_since_epoch().count();
+
+	//
+	// 静态成员变量
+	//
+	// 静态成员变量从属于类，即使未创建任何该类的对象，静态成员变量也是存在的，可实现多个同类对象之间的数据共享。
+	// 
+	// 静态成员变量在程序运行期间始终占据同一份内存空间，在程序开始运行时分配，在程序结束时释放。
+	// 
+	// 静态成员变量只能在类的外部通过 type class_name::static_member = xxx; 进行初始化。
+	// 
+	static long sCount;
 public:
 	// 
 	// 成员函数
@@ -76,7 +87,7 @@ public:
 	// 常成员函数
 	//
 	// 函数体内只能读取成员变量的值，不能修改。语法格式为：
-	//	return_type func_name(param) const
+	//	return_type func_name(param) const {}
 	// 
 	// 若某个成员变量不想受此限制，可在声明该成员变量时用 mutable 关键字进行修饰。
 	// 
@@ -85,6 +96,20 @@ public:
 	void print() const
 	{
 		cout << mName << ", id: " << mId << ", score: " << mScore << endl;
+	}
+
+	//
+	// 静态成员函数
+	//
+	// 静态成员函数从属于类，即使未创建任何该类的对象，静态成员函数也是存在的。
+	// 
+	// 静态成员函数内只能访问静态成员变量、其它静态成员函数和类外部的函数。
+	// 
+	// 静态成员函数内不能使用 this 指针。
+	//
+	static long sGetCount()
+	{
+		return sCount;
 	}
 
 	// 
@@ -103,7 +128,9 @@ public:
 		mName = new char[8] {"Unknown"};
 		mNeedClear = true;
 		mScore = -1.0f;
+		sCount++;
 	}
+
 	//
 	// explicit
 	// 
@@ -124,7 +151,10 @@ public:
 	// 
 	// 注意：成员变量的初始化顺序按照其在类中的定义顺序进行，跟成员初始化列表的书写顺序无关
 	//
-	Student(char* name, float score) : mName(name), mScore(score) {}
+	Student(char* name, float score) : mName(name), mScore(score)
+	{
+		sCount++;
+	}
 	//
 	// 拷贝构造函数
 	//
