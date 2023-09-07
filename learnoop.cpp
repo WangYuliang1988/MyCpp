@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "learnoop.h"
 #include "Student.h"
+#include "Pupil.h"
 
 using namespace std;
 
@@ -72,6 +73,16 @@ void introOop()
 	// 调用类的静态成员函数
 	//
 	Student::sGetCount(); // 12
+
+	//
+	// 继承
+	//
+	// Pupil 是 Student 的子类
+	//
+	Pupil hellen = Pupil(); // 父类调用无参构造函数，子类调用无参构造函数
+	Pupil kaven = Pupil(true); // 父类调用无参构造函数，子类调用有参构造函数
+	Pupil lily = Pupil("Lily", 80.f, true, 3); // 父类调用有参构造函数，子类调用有参构造函数
+	Pupil lisa = lily; // 父类调用无参构造函数，子类调用拷贝构造函数
 
 	cout << "To learn OOP in C++, check 'Student.h' and 'learnoop.cpp'.\n" << endl;
 }

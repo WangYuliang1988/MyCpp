@@ -24,12 +24,30 @@
     <ClCompile Include="learnoop.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Student.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Pupil.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="YoungPioneer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="learnref.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="learnoop.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Student.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Pupil.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="YoungPioneer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

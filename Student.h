@@ -79,6 +79,10 @@ public:
 		//
 		this->mName = name; // 此处的 this 并不是必须的，如果成员函数的形参名称和成员变量相同，则必须使用 this 指针
 	}
+	long long getId()
+	{
+		return this->mId;
+	}
 	// 方式二：在类中声明，在类的外部定义，该情况下成员函数为普通函数，不会自动变为内联函数。
 	float getScore();
 	void setScore(float score);
@@ -208,7 +212,7 @@ public:
 	//
 	float operator-(float f);
 	float operator+(float f);
-	void operator=(const Student& obj); // 此处将形参类型指定为 const Student&，是为确保函数体内只能读取 obj 成员的值
+	void operator=(const Student& obj); // 此处将形参类型指定为 const Student&，是为确保函数体内只能读取 obj 成员变量的值
 };
 
 #endif // !_WYL_STUDENT
