@@ -79,3 +79,15 @@ void Student::operator=(const Student& obj)
 {
 	mScore = obj.mScore;
 }
+
+//
+// 在类的外部定义友元函数
+// 
+// 友元函数必须在类中声明，类外定义
+// 
+// 友元函数不是类的成员函数，因此定义时不能加类名前缀
+//
+bool passExam(Student stu)
+{
+	return stu.mScore >= 60;
+}

@@ -75,6 +75,11 @@ void introOop()
 	Student::sGetCount(); // 12
 
 	//
+	// 调用类的友元函数
+	//
+	passExam(tom); // true
+
+	//
 	// 继承
 	//
 	// Pupil 是 Student 的子类

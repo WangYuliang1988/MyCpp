@@ -213,6 +213,21 @@ public:
 	float operator-(float f);
 	float operator+(float f);
 	void operator=(const Student& obj); // 此处将形参类型指定为 const Student&，是为确保函数体内只能读取 obj 成员变量的值
+
+	//
+	// 友元函数
+	//
+	// 友元函数是指虽然不是类的成员函数，但却可以访问类的所有成员的函数。
+	//
+	// 友元函数必须在类中声明（使用 friend 关键字修饰），类外定义。
+	// 
+	// 友元函数不是类的成员函数，其声明在类的 private/protected/public 下都可以，不影响使用。
+	// 
+	// 除了单个友元函数，还可以在类 A 中将类 B 声明为友元类，这样类 B 的所有成员函数都是类 A 的友元函数。
+	//
+	// 友元函数可以带来一些操作上的便利，但会破坏面向对象的封装特性，谨慎使用。
+	//
+	friend bool passExam(Student stu);
 };
 
 #endif // !_WYL_STUDENT
