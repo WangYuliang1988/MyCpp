@@ -55,9 +55,9 @@ public:
     //
     // 普通成员函数
     //
-    bool isYoungPioneer();
     void setYoungPioneer(bool isPioneer);
-    void print(); // 该函数会覆盖继承自 Student 类的 print() 函数
+    bool isYoungPioneer();
+    void print();
 };
 
 #endif // !_WYL_PUPIL

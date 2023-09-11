@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="College.cpp" />
     <ClCompile Include="learnoop.cpp" />
     <ClCompile Include="learnref.cpp" />
     <ClCompile Include="main.cpp" />
@@ -135,6 +136,7 @@
     <ClCompile Include="YoungPioneer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="College.h" />
     <ClInclude Include="learnoop.h" />
     <ClInclude Include="learnref.h" />
     <ClInclude Include="Pupil.h" />

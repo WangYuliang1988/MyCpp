@@ -2,6 +2,7 @@
 #include "learnoop.h"
 #include "Student.h"
 #include "Pupil.h"
+#include "College.h"
 
 using namespace std;
 
@@ -89,5 +90,23 @@ void introOop()
 	Pupil lily = Pupil("Lily", 80.f, true, 3); // 父类调用有参构造函数，子类调用有参构造函数
 	Pupil lisa = lily; // 父类调用无参构造函数，子类调用拷贝构造函数
 
-	cout << "To learn OOP in C++, check 'Student.h' and 'learnoop.cpp'.\n" << endl;
+	//
+	// 多态 & 虚函数
+	// 
+	// Pupil 和 College 是 Student 的子类
+	// 
+	// Student 将成员函数 print() 定义为虚函数
+	//
+	cout << "Polymorphism: " << endl;
+	Student* pStu;
+	Pupil pu = Pupil();
+	College co = College();
+	cout << " Pupil: ";
+	pStu = &pu;
+	pStu->print(); // 因为父类 Student 中的 print() 定义为虚函数，所以此处调用到的是 Pupil 类的 print() 函数
+	cout << " College: ";
+	pStu = &co;
+	pStu->print(); // 因为父类 Student 中的 print() 定义为虚函数，所以此处调用到的是 College 类的 print() 函数
+
+	cout << "To learn more about OOP in C++, check 'Student.h' and 'learnoop.cpp'.\n" << endl;
 }

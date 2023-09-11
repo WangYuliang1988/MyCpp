@@ -79,10 +79,6 @@ public:
 		//
 		this->mName = name; // 此处的 this 并不是必须的，如果成员函数的形参名称和成员变量相同，则必须使用 this 指针
 	}
-	long long getId()
-	{
-		return this->mId;
-	}
 	// 方式二：在类中声明，在类的外部定义，该情况下成员函数为普通函数，不会自动变为内联函数。
 	float getScore();
 	void setScore(float score);
@@ -97,9 +93,9 @@ public:
 	// 
 	// 备注：对于常对象，如：const Student CSTU，只能调用常成员函数，不能调用其它普通成员函数。
 	//
-	void print() const
+	long long cGetId() const
 	{
-		cout << mName << ", id: " << mId << ", score: " << mScore << endl;
+		return this->mId;
 	}
 
 	//
@@ -213,6 +209,32 @@ public:
 	float operator-(float f);
 	float operator+(float f);
 	void operator=(const Student& obj); // 此处将形参类型指定为 const Student&，是为确保函数体内只能读取 obj 成员变量的值
+
+	//
+	// 虚函数
+	//
+	// 虚函数是用 virtual 修饰的成员函数，必须定义在类中。
+	// 
+	// 虚函数用于实现多态，考虑这样一种情况：
+	// 
+	// Student 是父类，Pupil 和 College 是其子类，三个类中均定义了一个 void print() 成员函数。
+	// 
+	// Student* pStu;
+	// Pupil pu = Pupil();
+	// College co = College();
+	// 
+	// pStu = &pu;
+	// pStu->print(); // 未使用虚函数的情况下，调用到的是 Student 类的 print()
+	// 
+	// pStu = &co;
+	// pStu->print(); // 未使用虚函数的情况下，调用到的是 Student 类的 print()
+	// 
+	// 通过将父类（Student）中的 print() 定义为虚函数，即可在 pStu 指向子类（Pupil 和 College）对象时，调用到子类的 print()，实现多态。
+	//
+	virtual void print()
+	{
+		cout << "Student " << mName << ", id: " << mId << ", score: " << mScore << endl;
+	}
 
 	//
 	// 友元函数

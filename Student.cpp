@@ -42,6 +42,7 @@ Student::Student(const Student& obj)
 	size_t len = strlen(oName);
 	mName = new char[len + 1];
 	strcpy(mName, oName);
+	mNeedClear = true;
 
 	// mScore 为基础数据类型，直接赋值
 	mScore = obj.mScore;

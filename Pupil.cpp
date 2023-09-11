@@ -34,7 +34,6 @@ void Pupil::setYoungPioneer(bool isPioneer)
 
 void Pupil::print()
 {
-	cout << getName() << ", id: " << getId() << ", score: " << getScore();
-	cout << ", pioneer: " << boolalpha << mYoungPioneer; // boolalpha 用于将 bool 值打印为 true/false
-	cout << ", level: " << getLevel() << endl;
+	cout << "Pupil " << getName() << ", id: " << cGetId() << ", score: " << getScore();
+	cout << ", pioneer: " << boolalpha << mYoungPioneer << ", level: " << getLevel() << endl; // boolalpha 用于将 bool 值打印为 true/false
 }
