@@ -9,6 +9,7 @@
 #include "learnref.h"
 #include "learnoop.h"
 #include "Student.h"
+#include "Pupil.h"
 
 using namespace std;
 
@@ -106,6 +107,16 @@ int main()
 	// 实现机制：C++ 在编译时会根据函数的参数列表对函数进行重命名，发生调用时，编译器根据传入的实参来匹配对应的函数。
 	//
 
+	//
+	// static
+	//
+	// static 关键字具有以下作用：
+	//	1. 限定全局变量只能在定义该变量的文件内使用；
+	//	2. 限定函数只能在定义该函数的文件内使用；
+	//	3. 让局部变量在程序生命周期内存活，不再随函数的结束而结束，且只进行一次初始化；
+	//	4. 将类的成员变量和成员函数变为静态成员变量和静态成员函数，实现多个同类对象之间的数据共享。
+	//
+
 	// 引用
 	introRef();
 
@@ -123,19 +134,89 @@ int main()
 	//
 	cout << "Operator Overloading:" << endl;
 	Student andy = { "Andy", 90.f };
-	cout << "Student minus float: " << andy - 10.f << endl;
-	cout << "Student plus float: " << andy + 10.f << endl;
+	cout << " Student minus float: " << andy - 10.f << endl;
+	cout << " Student plus float: " << andy + 10.f << endl;
 	Student bob = {"Bob", 80.f};
 	bob = andy; // 自定义的 "=" 重载函数只对 mScore 进行赋值
-	cout << "Student Bob now has the same score with Andy: " << bob.getScore() << endl;
+	cout << " Student Bob now has the same score with Andy: " << bob.getScore() << "\n" << endl;
 
 	//
-	// static
+	// 类型转换
 	//
-	// static 关键字具有以下作用：
-	//	1. 限定全局变量只能在定义该变量的文件内使用；
-	//	2. 限定函数只能在定义该函数的文件内使用；
-	//	3. 让局部变量在程序生命周期内存活，不再随函数的结束而结束，且只进行一次初始化；
-	//	4. 将类的成员变量和成员函数变为静态成员变量和静态成员函数，实现多个同类对象之间的数据共享。
+	// static_cast
+	// 
+	// 语法：
+	//	static_cast<type>(expression)
+	// 
+	// 说明：
+	//	1. 用于基本数据类型之间的转换；
+	//	2. 用于父类-子类之间指针或引用的转换；
+	//	2. 转换是不安全的（即不保证转换结果是正确的）。
 	//
+	cout << "Use static_cast to:\n";
+	float scF = 3.14f;
+	int scI = static_cast<int>(scF);
+	cout << " convert float " << scF << " to int " << scI << endl;
+	void* scVp = { "hi" };
+	float* scFp = static_cast<float*>(scVp); // 将字符串指针经 void 指针中介转换为浮点型指针，可以转换成功，但转换结果没有意义（不安全）
+	cout << " convert void pointer to float pointer, result can be nonsense: " << *scFp << endl;
+	Student* scpStu = new Student();
+	Pupil* scpPu = static_cast<Pupil*>(scpStu); // 将父类型指针转换为子类型指针，可以转换成功，但是获取到的子类信息是错误的（不安全）
+	cout << " convert Student pointer to Pupil pointer, fail to get Pupil member 'level': " << scpPu->getLevel() << endl;
+	delete scpStu;
+	scpStu = NULL;
+	scpPu = NULL;
+	//
+	// dynamic_cast
+	// 
+	// 语法：
+	//	dynamic_cast<type>(expression)
+	// 
+	// 说明：
+	//	1. 用于父类-子类之间指针或引用的转换；
+	//	2. 父类必须含有虚函数，否则编译报错；
+	//	3. type 只能是类指针、类引用、void* 中的一种；
+	//	4. 运行时转换（另外三种转换都是编译时转换），若转换失败，则返回 NULL。
+	//
+	cout << "Use dynamic_cast to:" << endl;
+	Student* dcpStu = new Student();
+	Pupil* dcpPu = dynamic_cast<Pupil*>(dcpStu); // 将父类型指针转换为子类型指针，转换失败，返回 NULL
+	cout << " fail to convert Student pointer to Pupil pointer, result: " << dcpPu << endl;
+	delete dcpStu;
+	dcpStu = NULL;
+	//
+	// const_cast
+	// 
+	// 语法：
+	//	const_cast<type>(expression)
+	// 
+	// 说明：
+	//	1. 去除指向常量的指针或引用的常量性，使得可以通过指针或引用修改对应常量的值；
+	//	2. type 必须是指针或引用，且除 const 修饰外，type 和 expression 的类型相同。
+	//
+	const int CI = 10;
+	const int* p = &CI;
+	//*p = 20; // 报错，因为 p 指向常量，不能通过 *p = xxx 来改变 CI 的值
+	int* q = const_cast<int*>(p);
+	*q = 20; // 成功
+	cout << "Use const_cast to:\n change const variable by pointer, ";
+	cout << "CI: " << CI << "(0x" << &CI << "), "; // 注意：CI 的值仍然是 10，即使通过调试可以看到其内存存储的值是 20 ！
+	cout << "p: " << *p << "(0x" << p << "), ";
+	cout << "q: " << *q << "(0x" << q << ")" << endl;
+	//
+	// reinterpret_cast
+	// 
+	// 语法：
+	//	reinterpret_cast<type>(expression)
+	// 
+	// 说明：
+	//	1. 将某种类型的指针或引用转换为任意其他类型的指针或引用；
+	//	2. 将一个指针或引用转换为一个整数；
+	//	3. 将一个整数转换为一个指针或引用；
+	//	4. 转换时只是进行纯粹的比特位拷贝，谨慎使用。
+	//
+	int* rcPi = new int(10);
+	double* rcPd = reinterpret_cast<double*>(rcPi);
+	cout << "Use reinterpret_cast to:\n convert int pointer to double pointer, ";
+	cout << "rcPi: " << *rcPi << "(0x" << rcPi << "), " << "rcPd:" << *rcPd << "(0x" << rcPd << ")" << endl;
 }
