@@ -58,6 +58,13 @@ public:
     void setYoungPioneer(bool isPioneer);
     bool isYoungPioneer();
     void print();
+
+    //
+    // 定义父类 YoungPioneer 声明的纯虚函数。
+    // 
+    // 若不定义，则 Pupil 也会成为抽象类，无法实例化对象。
+    //
+    bool shouldUpgrade();
 };
 
 #endif // !_WYL_PUPIL

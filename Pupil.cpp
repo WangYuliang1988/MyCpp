@@ -37,3 +37,8 @@ void Pupil::print()
 	cout << "Pupil " << getName() << ", id: " << cGetId() << ", score: " << getScore();
 	cout << ", pioneer: " << boolalpha << mYoungPioneer << ", level: " << getLevel() << endl; // boolalpha 用于将 bool 值打印为 true/false
 }
+
+bool Pupil::shouldUpgrade()
+{
+	return getScore() >= 80;
+}
