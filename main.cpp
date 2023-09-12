@@ -219,4 +219,27 @@ int main()
 	double* rcPd = reinterpret_cast<double*>(rcPi);
 	cout << "Use reinterpret_cast to:\n convert int pointer to double pointer, ";
 	cout << "rcPi: " << *rcPi << "(0x" << rcPi << "), " << "rcPd:" << *rcPd << "(0x" << rcPd << ")" << endl;
+
+	//
+	// 虚继承（虚基类）
+	//
+	// 解决继承的二义性问题。考虑这样一种情况：
+	//
+	// 类 A 包含一个公开的成员变量 int i，类 B、类 C 公开继承类 A，则 B、C 各自包含一个成员变量 int i。
+	//
+	// 此时又有一个类 D，公开继承类 B 和 类 C，那么 D 中将包含两个成员 i，一个继承自 B，一个继承自 C。
+	// 
+	// 如果通过类 D 的对象去访问 i，编译会报错，因为无法确认 i 的来源。对此，有两种解决方式：
+	//
+	// 方式一：保持 D 中含有两个 i，在访问时指明 i 的来源。
+	//	D d = D();
+	//	d.B::i; // 指明访问的是 B 的成员 i
+	//
+	// 方式二：类 B 和类 C 继承类 A 时添加 virtual 修饰，使类 A 的继承路径上，子类中都只保留一份类 A 的成员，即类 D 中只有一个 i。
+	//	class B: virtual public A {...};
+	//	class C: virtual public A {...};
+	//	class D: public B, public C {...};
+	//	D d = D();
+	//	d.i; // D 中只包含一个成员变量 i，可直接调用
+	//
 }
