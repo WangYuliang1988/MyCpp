@@ -141,6 +141,7 @@
     <ClInclude Include="learnref.h" />
     <ClInclude Include="Pupil.h" />
     <ClInclude Include="Student.h" />
+    <ClInclude Include="learntmpt.h" />
     <ClInclude Include="YoungPioneer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

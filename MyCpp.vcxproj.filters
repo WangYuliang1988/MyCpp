@@ -56,5 +56,8 @@
     <ClInclude Include="College.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="learntmpt.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

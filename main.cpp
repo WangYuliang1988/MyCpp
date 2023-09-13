@@ -10,6 +10,7 @@
 #include "learnoop.h"
 #include "Student.h"
 #include "Pupil.h"
+#include "learntmpt.h"
 
 using namespace std;
 
@@ -218,7 +219,7 @@ int main()
 	int* rcPi = new int(10);
 	double* rcPd = reinterpret_cast<double*>(rcPi);
 	cout << "Use reinterpret_cast to:\n convert int pointer to double pointer, ";
-	cout << "rcPi: " << *rcPi << "(0x" << rcPi << "), " << "rcPd:" << *rcPd << "(0x" << rcPd << ")" << endl;
+	cout << "rcPi: " << *rcPi << "(0x" << rcPi << "), " << "rcPd:" << *rcPd << "(0x" << rcPd << ")\n" << endl;
 
 	//
 	// 虚继承（虚基类）
@@ -242,4 +243,24 @@ int main()
 	//	D d = D();
 	//	d.i; // D 中只包含一个成员变量 i，可直接调用
 	//
+
+	// 
+	// 模板
+	// 
+	// 函数模板
+	//
+	cout << "Template: " << endl;
+	cout << " Template function sum(1, 1): " << sum(1, 1) << endl;
+	cout << " Template function sum(3.14f, 1.24f): " << sum(3.14f, 1.24f) << endl;
+	//
+	// 类模板
+	//
+	Math<int> intMath; // 即 Math<int> intMath = Math<int>();
+	cout << " Template class Math min(4, 8): " << intMath.min(4, 8) << endl;
+	cout << " Template class Math max(4, 8): " << intMath.max(4, 8) << endl;
+	Math<float> floatMath; // 即 Math<float> floatMath = Math<float>();
+	cout << " Template class Math min(3.14f, 1.24f): " << floatMath.min(3.14f, 1.24f) << endl;
+	cout << " Template class Math max(3.14f, 1.24f): " << floatMath.max(3.14f, 1.24f) << endl;
+	//
+	cout << "To learn more about Template in C++, check learntmpt.h.\n" << endl;
 }
