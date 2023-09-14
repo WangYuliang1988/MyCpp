@@ -263,4 +263,43 @@ int main()
 	cout << " Template class Math max(3.14f, 1.24f): " << floatMath.max(3.14f, 1.24f) << endl;
 	//
 	cout << "To learn more about Template in C++, check learntmpt.h.\n" << endl;
+
+	//
+	// 异常
+	//
+	// C++ 使用 throw 来抛出异常，使用 try/catch 来捕获和处理异常。
+	//
+	// 语法格式：
+	//	throw expression; // throw 后跟任意表达式，表达式的结果类型就是异常的类型
+	// 
+	//	try
+	//	{
+	//		...
+	//	}
+	//	catch (excetion_type name) // 处理特定类型的异常
+	//	{
+	//		...
+	//	}
+	//	catch (excetion_type name) // 处理特定类型的异常
+	//	{
+	//		...
+	//	}
+	//	catch (...) // 处理任何类型的异常
+	//	{
+	//		...
+	//	}
+	//
+	try
+	{
+		throw "Look out! Some bad thing just happened!";
+	}
+	catch (const char* e)
+	{
+		cout << e << endl;
+		cout << "Don't worry, we've alreay caught it." << endl;
+	}
+	catch (...)
+	{
+		cout << "Unknown Exception" << endl;
+	}
 }
